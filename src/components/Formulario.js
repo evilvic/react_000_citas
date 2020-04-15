@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import uuid from 'uuid/v4'
 
-const Formulario = () => {
+const Formulario = ({crearCita}) => {
 
     const [ cita, actualizarCita ] = useState({
         mascota: '',
@@ -37,7 +37,16 @@ const Formulario = () => {
         actualizarError(false)
 
         cita.id = uuid()
-        console.log(cita)
+
+        crearCita(cita)
+
+        actualizarCita({
+            mascota: '',
+            propietario: '',
+            fecha: '',
+            hora: '',
+            sintomas: ''
+        })
     }
 
     return (
